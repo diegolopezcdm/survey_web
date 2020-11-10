@@ -1,0 +1,49 @@
+<!-- Toolbar -->
+<mat-toolbar color="primary" class="app-header">
+  <div><a href="https://google.com" target="_blank" class="positronx">Survey.io</a></div>
+  
+  <span class="nav-tool-items">
+    <a mat-button mat-button  routerLink="/login" routerLinkActive="active">Log in</a>
+  </span>
+</mat-toolbar>
+
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center" *ngIf="voted">
+  Thanks for voting, your oppinion counts!
+</div>
+
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center" *ngIf="!voted">
+
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Vote Here</mat-card-title>
+        <mat-card-subtitle>We need your oppinion</mat-card-subtitle>
+      </mat-card-header>
+  
+      <form class="example-form" (ngSubmit)="onSubmit()">
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Name" name="survey.firstName" [(ngModel)]="survey.firstName" >
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Last Name" name="survey.lastName" [(ngModel)]="survey.lastName">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Age" name="survey.age" [(ngModel)]="survey.age">
+          </mat-form-field>
+
+          <p>
+            Preferences:
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style" name="survey.preference" [(ngModel)]="survey.preference">
+                <mat-button-toggle value="Java">Java</mat-button-toggle>
+                <mat-button-toggle value="C#">C#</mat-button-toggle>
+              </mat-button-toggle-group>  
+          </p>
+
+        </mat-card-content>
+        <button type="submit" mat-stroked-button color="primary" class="btn-block">Vote</button>
+      </form>
+    </mat-card>
+  
+  </div>
